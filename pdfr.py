@@ -1,5 +1,5 @@
 import streamlit as st
-from PyPDF2 import PdfReader
+from PyPDF2 import PdfFileReader
 from langchain.chat_models import ChatOpenAI
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import OpenAIEmbeddings
@@ -35,7 +35,7 @@ def main():
     if pdf is not None:
         st.write(f"PDF file: {pdf}")  # Display information about the uploaded PDF file
 
-        pdf_reader = PdfReader(pdf)
+        pdf_reader = PdfFileReader(pdf)
         text = ""
 
         for page in pdf_reader.pages:
