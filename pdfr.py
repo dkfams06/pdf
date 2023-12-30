@@ -31,16 +31,22 @@ def main():
     
     # Upload PDF file
     pdf = st.file_uploader(" ", type="pdf")
-    
+    # After extracting text from the PDF
     if pdf is not None:
         st.write(f"PDF file: {pdf}")  # Display information about the uploaded PDF file
 
         pdf_reader = PdfFileReader(pdf)
         text = ""
 
+        # Extract a snippet of text (e.g., the first 500 characters)
+        snippet_length = 500
         for page in pdf_reader.pages:
             text += page.extract_text()
-        st.write(f"Text from PDF: {text}")  # Display the text extracted from the PDF
+        
+        text_snippet = text[:snippet_length]
+        
+        st.write(f"Text from PDF (Snippet): {text_snippet}...")  # Display the text snippet
+    
 
         text_splitter = CharacterTextSplitter(
             separator="\n",
