@@ -6,6 +6,7 @@ from langchain.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains.question_answering import load_qa_chain
 from googletrans import Translator
+import openai
 
 # Function to perform Google Translate
 def google_translate(messages):
