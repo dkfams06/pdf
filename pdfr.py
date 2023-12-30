@@ -1,5 +1,5 @@
 import streamlit as st
-#from PyPDF2 import PdfFileReader
+from PyPDF2 import PdfFileReader
 from langchain.chat_models import ChatOpenAI
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS
