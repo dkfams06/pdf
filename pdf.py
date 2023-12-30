@@ -33,12 +33,15 @@ def main():
     pdf = st.file_uploader(" ", type="pdf")
     
     if pdf is not None:
+        st.write(f"PDF file: {pdf}")  # Display information about the uploaded PDF file
+
         pdf_reader = PdfReader(pdf)
         text = ""
-        
+
         for page in pdf_reader.pages:
             text += page.extract_text()
-        
+        st.write(f"Text from PDF: {text}")  # Display the text extracted from the PDF
+
         text_splitter = CharacterTextSplitter(
             separator="\n",
             chunk_size=1000,
