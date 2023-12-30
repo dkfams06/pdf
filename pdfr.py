@@ -1,11 +1,11 @@
 import streamlit as st
-from PyPDF2 import PdfReader
+from PyPDF2 import PdfFileReader
 from langchain.chat_models import ChatOpenAI
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import OpenAIEmbeddings
+from langchain.vectorstores import FAISS
+from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains.question_answering import load_qa_chain
 from googletrans import Translator
-from langchain.vectorstores.faiss_vector_store import FAISS
 
 # Function to perform Google Translate
 def google_translate(messages):
@@ -35,7 +35,7 @@ def main():
     if pdf is not None:
         st.write(f"PDF file: {pdf}")  # Display information about the uploaded PDF file
 
-        pdf_reader = PdfReader(pdf)
+        pdf_reader = PdfFileReader(pdf)
         text = ""
 
         # Extract a snippet of text (e.g., the first 500 characters)
