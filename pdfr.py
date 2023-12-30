@@ -1,5 +1,5 @@
 import streamlit as st
-from PyPDF2 import PdfFileReader
+from PyPDF2 import PdfReader
 from langchain.chat_models import ChatOpenAI
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS
@@ -35,7 +35,7 @@ def main():
     if pdf is not None:
         st.write(f"PDF file: {pdf}")  # Display information about the uploaded PDF file
 
-        pdf_reader = PdfFileReader(pdf)
+        pdf_reader = PdfReader(pdf)
         text = ""
 
         # Extract a snippet of text (e.g., the first 500 characters)
