@@ -25,7 +25,7 @@ def main():
         st.markdown('---')
 
     # Main space
-    st.header("PDF Content Questioning Program")
+    st.header("PDF 내용질문 프로그램")
     st.markdown('---')
     st.subheader("Upload a PDF File")
     
@@ -37,16 +37,10 @@ def main():
 
         pdf_reader = PdfReader(pdf)
         text = ""
-
-        # Extract a snippet of text (e.g., the first 500 characters)
-        snippet_length = 500
+        
         for page in pdf_reader.pages:
             text += page.extract_text()
         
-        text_snippet = text[:snippet_length]
-        
-        st.write(f"Text from PDF (Snippet): {text_snippet}...")  # Display the text snippet
-    
 
         text_splitter = CharacterTextSplitter(
             separator="\n",
@@ -57,7 +51,7 @@ def main():
         chunks = text_splitter.split_text(text)
 
         st.markdown('---')
-        st.subheader("Enter Your Question")
+        st.subheader("질문입력")
         
         # Get user question
         user_question = st.text_input("Ask a question:")
